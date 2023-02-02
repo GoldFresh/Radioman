@@ -6,8 +6,13 @@ import org.junit.jupiter.api.Test;
 public class RadioTest {
 
     @Test
+    public void shouldRadio(){
+        Radio radio = new Radio();
+    }
+
+    @Test
     public void shouldSetStation(){
-        Radio radio = new Radio(0,9,5, 0, 100, 30);
+        Radio radio = new Radio(0, 9, 5, 0, 100, 30);
 
         Assertions.assertEquals(5, radio.getCurrentStation());
     }
@@ -21,7 +26,7 @@ public class RadioTest {
 
     @Test
     public void shouldSetStationAbovePossible(){
-        Radio radio = new Radio(0,9,10, 0, 100, 30);
+        Radio radio = new Radio(0,9, 10, 0, 100, 30);
 
         Assertions.assertEquals(0, radio.getFirstStation());
     }
@@ -52,7 +57,7 @@ public class RadioTest {
 
         radio.prevStation();
 
-        Assertions.assertEquals(9, radio.getCurrentStation() );
+        Assertions.assertEquals(9, radio.getLastStation() );
     }
 
     @Test
@@ -86,8 +91,7 @@ public class RadioTest {
         Assertions.assertEquals(0, radio.getMinVolume());
     }
 
-    @Test
-    public void shouldIncreaseMinVolume(){
+    @Test public void shouldIncreaseMinVolume(){
         Radio radio = new Radio(0,9,9, 0, 100, 99);
 
         radio.increaseVolume();
