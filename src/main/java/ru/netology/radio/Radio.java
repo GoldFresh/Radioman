@@ -3,26 +3,30 @@ package ru.netology.radio;
 public class Radio {
     private int firstStation = 0;
     private int lastStation = 9;
-    private int currentStation;
+    private int currentStation = firstStation;
+    private int size = 10;
 
 
     private int minVolume = 0;
     private int maxVolume = 100;
-    private int currentVolume;
+    private int currentVolume = minVolume;
 
 
     public Radio(){
 
     }
 
-    public Radio(int firstStation, int lastStation, int currentStation, int minVolume, int maxVolume, int currentVolume){
+    public Radio(int size){
+        this.size = size;
         this.firstStation = firstStation;
-        this.lastStation  = lastStation;
-        this.currentStation = currentStation;
+        this.lastStation = lastStation;
+        this.currentStation = firstStation;
+    }
 
+    public Radio(int minVolume, int maxVolume){
         this.minVolume = minVolume;
         this.maxVolume = maxVolume;
-        this.currentVolume = currentVolume;
+        this.currentVolume = minVolume;
     }
 
     public int getCurrentStation(){
@@ -37,14 +41,14 @@ public class Radio {
         return lastStation;
     }
 
-    public int setCurrentStation(int currentStation){
+    public void setCurrentStation(int currentStation){
         if (currentStation > lastStation){
+            return;
         }
         if (currentStation < firstStation){
+            return;
         }
         this.currentStation = currentStation;
-
-        return lastStation;
     }
 
     public void nextStation(){
@@ -76,10 +80,10 @@ public class Radio {
     }
 
     public void setCurrentVolume(int currentVolume){
-        if (currentVolume >= maxVolume){
+        if (currentVolume > maxVolume){
             currentVolume = maxVolume;
         }
-        if (currentVolume <= minVolume){
+        if (currentVolume < minVolume){
             currentVolume = minVolume ;
         }
         this.currentVolume = currentVolume;
@@ -87,7 +91,7 @@ public class Radio {
 
     public void increaseVolume(){
         if (currentVolume >= maxVolume){
-           setCurrentVolume(maxVolume);
+            setCurrentVolume(maxVolume);
         } else {
             setCurrentVolume(currentVolume + 1);
         }
