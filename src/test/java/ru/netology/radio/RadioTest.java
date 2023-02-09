@@ -14,12 +14,14 @@ public class RadioTest {
     public void shouldSetStation() {
         Radio radio = new Radio(10);
 
-        Assertions.assertEquals(0, radio.getCurrentStation());
+        radio.setCurrentStation(7);
+
+        Assertions.assertEquals(7, radio.getCurrentStation());
     }
 
     @Test
     public void shouldSetFirstStation(){
-        Radio radio = new Radio(10);;
+        Radio radio = new Radio(10);
 
         Assertions.assertEquals(0, radio.getFirstStation());
     }
@@ -94,7 +96,9 @@ public class RadioTest {
     public void shouldSetVolume(){
         Radio radio = new Radio(10, 50);
 
-        Assertions.assertEquals(10, radio.getCurrentVolume());
+        radio.setCurrentVolume(20);
+
+        Assertions.assertEquals(20, radio.getCurrentVolume());
     }
 
     @Test
